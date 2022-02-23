@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent {
+export class LoginComponent implements OnInit {
 
   usuario={
     email: '',
@@ -31,4 +31,8 @@ constructor(private authService:AuthService,private router:Router){
       this.router.navigate(['/mascotas'])
     })
   }
+
+  ngOnInit(): void {
+  }
+
 }
