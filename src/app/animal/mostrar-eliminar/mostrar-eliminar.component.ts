@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalsServiceService } from 'src/app/animals-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mostrar-eliminar',
@@ -9,7 +10,7 @@ import { AnimalsServiceService } from 'src/app/animals-service.service';
 export class MostrarEliminarComponent implements OnInit {
 
   constructor(private service:AnimalsServiceService) { }
-
+  id='';
   MascotasList:any=[];
 
   ngOnInit(): void {
@@ -22,15 +23,15 @@ export class MostrarEliminarComponent implements OnInit {
       console.log(this.MascotasList);
     })
   }
-
-  deleteClick(items: { AnimalId: any; }){
-    if(confirm("¿esta seguro que desea adoptar?")){
-      this.service.deletelist(items.AnimalId).subscribe(data=>{
-        alert(data.toString());
-        this.verMascotalist();
-      })
-    }
-  }
-  
+ adoptar(){
+  Swal
+  .fire({
+      title: "Regalanos un número de contacto",
+      input: "text",
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      cancelButtonText: "Cancelar",
+ });
+ } 
 
 }
